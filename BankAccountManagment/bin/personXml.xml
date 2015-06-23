@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+               http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">  
+  <bean id="personbean1" class="exp.surya.bankmangmnt.model.Person">
+  <property name="FName" value="Surya"></property>
+  <property name="LName" value="Devarajan"></property>
+  <property name="Gender" value="F"></property>
+  <property name="Address" value="Maliyackal"></property>
+  <property name="DOB" value="02-09-1990"></property>
+  <property name="Pin" value="686691"></property>
+  
+  
+  </bean>
+  <bean id="accountbean1" class="exp.surya.bankmangmnt.model.Account">
+  <property name="Balance" value="5000"></property>
+  </bean>
+  </beans>
