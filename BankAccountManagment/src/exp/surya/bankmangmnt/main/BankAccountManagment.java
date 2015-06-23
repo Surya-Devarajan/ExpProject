@@ -21,7 +21,11 @@ public class BankAccountManagment {
 		 
 	        /*ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("hibernateConf.xml");
 	         
-	  
+	  /werwt3uyh9aw8oepwLGEFHURE;BGEWQLIGIUUOEQEIOQOUFDWHUFUFHIHFIFHWOJK
+	   * DBCEAIDHUEAWQHUIDJ
+	   * HUDOFDEFHIJC
+	   * 
+	   * 
 	        AccountDAO accountDAO=(AccountDAO) context.getBean("accountDAO");
 	        
 	        Resource resource= new ClassPathResource("personXml.xml");
