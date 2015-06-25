@@ -39,5 +39,21 @@
     <bean id="accountDAO" class="exp.surya.bankmangmnt.dao.AccountDAOImpl">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </bean>
-    
+    <bean id="updateDAO" class="exp.surya.bankmangmnt.dao.UpdateDAOImpl">
+    	<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
+    <bean id="viewDAO" class="exp.surya.bankmangmnt.dao.ViewDAOImpl">
+    	<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
+    <bean id="showDAO" class="exp.surya.bankmangmnt.dao.ShowDAOImpl">
+    	<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    	</bean>
+    	
+    <bean id="depositDAO" class="exp.surya.bankmangmnt.dao.DepositDAOImpl">
+    	<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    	</bean>
+    	<bean id="transferDAO" class="exp.surya.bankmangmnt.dao.TransferDAOImpl">
+    	<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"></property>
+    	</bean>
+     
 </beans>

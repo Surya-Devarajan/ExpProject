@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class Account {
 
 	private Integer id;
-	private Double Balance;
+	private Float Balance;
 
 	@Id
 	@Column(name = "AccNo")
@@ -26,11 +26,11 @@ public class Account {
 	}
 
 	@Column(name = "Balance")
-	public Double getBalance() {
+	public Float getBalance() {
 		return Balance;
 	}
 
-	public void setBalance(Double balance) {
+	public void setBalance(Float balance) {
 		Balance = balance;
 	}
 

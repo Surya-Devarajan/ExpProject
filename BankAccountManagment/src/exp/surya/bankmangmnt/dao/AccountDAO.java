@@ -9,6 +9,6 @@ public interface AccountDAO {
 	
 public void save(Account a,Person p);
     
-    public List<Account> list();
+ public List<Account> list();
 
 }

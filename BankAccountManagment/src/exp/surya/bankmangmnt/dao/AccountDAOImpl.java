@@ -22,10 +22,9 @@ public class AccountDAOImpl implements AccountDAO{
 	public void save(Account a,Person p){
 		Session session = this.sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
-        session.persist(a);
+        session.save(a);
         p.setAccount(a);
         session.save(p);
-        
         tx.commit();
         session.close();
 	}

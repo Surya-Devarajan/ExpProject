@@ -1,5 +1,6 @@
 package exp.surya.bankmangmnt.main;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -11,68 +12,70 @@ import org.springframework.core.io.Resource;
 
 
 import exp.surya.bankmangmnt.mainmenu.CreateAccount;
+import exp.surya.bankmangmnt.mainmenu.Deposit;
+import exp.surya.bankmangmnt.mainmenu.ShowAccounts;
+import exp.surya.bankmangmnt.mainmenu.Transfer;
+import exp.surya.bankmangmnt.mainmenu.UpdateDetails;
+import exp.surya.bankmangmnt.mainmenu.ViewaAccount;
 import exp.surya.bankmangmnt.model.Account;
 import exp.surya.bankmangmnt.model.Person;
 import exp.surya.bankmangmnt.dao.*;
 
 
 public class BankAccountManagment {
-	 public static void main(String[] args) {
+	 public static void main(String[] args) throws IOException {
 		 
-	        /*ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("hibernateConf.xml");
+	        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("hibernateConf.xml");
 	         
-	  /werwt3uyh9aw8oepwLGEFHURE;BGEWQLIGIUUOEQEIOQOUFDWHUFUFHIHFIFHWOJK
-	   * DBCEAIDHUEAWQHUIDJ
-	   * HUDOFDEFHIJC
-	   * 
-	   * 
+	 
 	        AccountDAO accountDAO=(AccountDAO) context.getBean("accountDAO");
-	        
-	        Resource resource= new ClassPathResource("personXml.xml");
-			BeanFactory factory= new XmlBeanFactory(resource);
-	         
-			Account account=(Account)factory.getBean("accountbean1") ;
-			Person person=(Person)factory.getBean("personbean1");
-	        
-	        Account account = new Account();
-	        Person person = new Person();
-
-	        person.setFName("Vishnu");
-	        person.setLName("G");
-	        person.setDOB("29-03-1989");
-	        person.setAddress("some address,some address");
-	        person.setGender("M");
-	        person.setPin((long)69887);
-	        
-	        account.setBalance((double)500);
+	        UpdateDAO updateDAO=(UpdateDAO) context.getBean("updateDAO");
+	        ViewDAO viewDAO=(ViewDAO) context.getBean("viewDAO");
+	        ShowDAO showDAO=(ShowDAO) context.getBean("showDAO");
+	        DepositDAO depositDAO=(DepositDAO) context.getBean("depositDAO");
+	        TransferDAO transferDAO=(TransferDAO) context.getBean("transferDAO");
 	        
 	        
-			accountDAO.save(account,person); 
-	        System.out.println("Person::"+person);
-	         
-	        
-	        List<Account> acclist =accountDAO.list();
-	        for(Person p : prsnlist){
-	            System.out.println("Person List::"+p);
-	        }
-	        //close resources
-	        context.close();*/  
-		  System.out.println("1. Create Account");
-		  Scanner sc= new Scanner(System.in);
+	        System.out.println("1. Create Account");
+	        System.out.println("2. Updtae Account");
+	        System.out.println("3. View a Account details");
+	        System.out.println("4. Show all Account details");
+	        System.out.println("5. Deposit ");
+	        System.out.println("6. Transfer Amount");
+	        Scanner sc= new Scanner(System.in);
 		  
-		  int a=0;
-		  a=sc.nextInt();
-		  switch (a) {
-		case 1:
-			CreateAccount CA= new CreateAccount();
-			CA.createAccount();
-			
+	        int a=0;
+	        
+	        a=sc.nextInt();
+	        switch (a) {
+	        case 1:
+			  CreateAccount CA= new CreateAccount();
+			  CA.createAccount(accountDAO);
 			break;
-
-		default:
+	        case 2:
+			  UpdateDetails UA=new UpdateDetails();
+			  UA.updateAccount(updateDAO);
+			 break;
+			 case 3:
+				 ViewaAccount VA=new ViewaAccount();
+			  	 VA.viewaAccount(viewDAO);
+			  break;
+			 case 4:
+				 ShowAccounts SA=new ShowAccounts();
+				 SA.showAccounts(showDAO);
+			 break;
+			case 5:
+				 Deposit DP=new Deposit();
+				 DP.depositAmount(depositDAO);
+			 break;
+			case 6:
+				Transfer TR=new Transfer();
+				TR.transferAmount(transferDAO);
 			break;
-		}
-		  
-	    }
+				
+	        default:
+			break;
+		}  
+	   }
 
 }

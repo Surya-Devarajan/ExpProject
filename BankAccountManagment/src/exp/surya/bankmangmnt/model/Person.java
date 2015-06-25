@@ -98,5 +98,10 @@ public class Person {
 	public void setAccount(Account account) {
 		this.account = account;
 	}
-
+	@Override
+	public String toString()
+	{
+		return("PersonId: "+ Id +", FirstName: "+FName+", LastName: "+LName+", Address: "+Address+", Gender: "+Gender+"," +
+				" Date of birth: "+DOB+", Pin: "+Pin+", Balance: "+account.getBalance());
+	}
 }
