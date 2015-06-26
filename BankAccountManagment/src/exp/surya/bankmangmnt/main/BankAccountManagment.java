@@ -34,48 +34,54 @@ public class BankAccountManagment {
 	        ShowDAO showDAO=(ShowDAO) context.getBean("showDAO");
 	        DepositDAO depositDAO=(DepositDAO) context.getBean("depositDAO");
 	        TransferDAO transferDAO=(TransferDAO) context.getBean("transferDAO");
-	        
-	        
-	        System.out.println("1. Create Account");
-	        System.out.println("2. Updtae Account");
-	        System.out.println("3. View a Account details");
-	        System.out.println("4. Show all Account details");
-	        System.out.println("5. Deposit ");
-	        System.out.println("6. Transfer Amount");
-	        Scanner sc= new Scanner(System.in);
-		  
-	        int a=0;
-	        
-	        a=sc.nextInt();
-	        switch (a) {
-	        case 1:
-			  CreateAccount CA= new CreateAccount();
-			  CA.createAccount(accountDAO);
-			break;
-	        case 2:
-			  UpdateDetails UA=new UpdateDetails();
-			  UA.updateAccount(updateDAO);
-			 break;
-			 case 3:
-				 ViewaAccount VA=new ViewaAccount();
-			  	 VA.viewaAccount(viewDAO);
-			  break;
-			 case 4:
-				 ShowAccounts SA=new ShowAccounts();
-				 SA.showAccounts(showDAO);
-			 break;
-			case 5:
-				 Deposit DP=new Deposit();
-				 DP.depositAmount(depositDAO);
-			 break;
-			case 6:
-				Transfer TR=new Transfer();
-				TR.transferAmount(transferDAO);
-			break;
-				
-	        default:
-			break;
-		}  
-	   }
+	        String c;
+	        String n="n";
+	        do
+	        {
+	        	System.out.println("1. Create Account");
+		        System.out.println("2. Updtae Account");
+		        System.out.println("3. View a Account details");
+		        System.out.println("4. Show all Account details");
+		        System.out.println("5. Deposit ");
+		        System.out.println("6. Transfer Amount");
+		        Scanner sc= new Scanner(System.in);
+		        int a=0;
+		        a=sc.nextInt();
+		        switch (a) {
+		        case 1:
+				  CreateAccount CA= new CreateAccount();
+				  CA.createAccount(accountDAO);
+				break;
+		        case 2:
+				  UpdateDetails UA=new UpdateDetails();
+				  UA.updateAccount(updateDAO);
+				 break;
+				 case 3:
+					 ViewaAccount VA=new ViewaAccount();
+				  	 VA.viewaAccount(viewDAO);
+				  break;
+				 case 4:
+					 ShowAccounts SA=new ShowAccounts();
+					 SA.showAccounts(showDAO);
+				 break;
+				case 5:
+					 Deposit DP=new Deposit();
+					 DP.depositAmount(depositDAO);
+				 break;
+				case 6:
+					Transfer TR=new Transfer();
+					TR.transferAmount(transferDAO);
+				break;
+					
+		        default:
+		        	System.out.println("Invalid input");
+				break;
+			}  
+		        System.out.println("Do you want to continue y/n");
+		        c=sc.next().trim();
+	        } while(!c.equals(n));
+	        System.out.println("Bye");
+	       
+	  }  
 
 }

@@ -25,15 +25,15 @@ private SessionFactory sessionFactory;
 		
         Transaction tx = session.beginTransaction();
        //Person p = (Person) session.load(Person.class, acno);
-       Query query =session.createQuery("from Person where account=:accNO");
-       query.setInteger("accNO", acno);
-       Person p = (Person) query.uniqueResult();
+        Query query =session.createQuery("from Person where account=:accNO");
+       	query.setInteger("accNO", acno);
+       	Person p = (Person) query.uniqueResult();
+       	if(p==null)
+       		System.out.println("The account number you hav entered is wrong");
         Scanner sc = new Scanner(System.in);
 		System.out.println("Your First name is :"+ p.getFName());
 		System.out.println("Update your first name if don't want to update press enter :");
-		String fname;
-		fname=sc.nextLine();
-		System.out.println("entering"+fname);
+		String fname=sc.nextLine();
 		if(!fname.equals("")){
 			p.setFName(fname);}
 		System.out.println("Your last name is :"+ p.getLName());
@@ -53,8 +53,10 @@ private SessionFactory sessionFactory;
 			p.setDOB(dob);
 		System.out.println("Your PIN is :"+ p.getPin());
 		System.out.println("Update your pin no if don't want to update press enter:");
-		Long pin=sc.nextLong();
-		if(!pin.equals("")){
+		String pinstr=sc.nextLine();
+		
+		if(!pinstr.equals("")){
+			Long pin=Long.valueOf(pinstr);
 			p.setPin(pin);
 		}
         session.save(p);

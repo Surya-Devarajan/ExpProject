@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "personDetails")
+@Table(name = "persondetails")
 public class Person {
 
 	private int Id;
@@ -101,7 +101,7 @@ public class Person {
 	@Override
 	public String toString()
 	{
-		return("PersonId: "+ Id +", FirstName: "+FName+", LastName: "+LName+", Address: "+Address+", Gender: "+Gender+"," +
+		return("PersonId: "+ Id +",AccNo:"+account.getId()+ " FirstName: "+FName+", LastName: "+LName+", Address: "+Address+", Gender: "+Gender+"," +
 				" Date of birth: "+DOB+", Pin: "+Pin+", Balance: "+account.getBalance());
 	}
 }

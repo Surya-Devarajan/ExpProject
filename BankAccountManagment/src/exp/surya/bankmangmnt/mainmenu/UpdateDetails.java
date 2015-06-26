@@ -12,8 +12,13 @@ public class UpdateDetails {
 		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter your account no to update details :");
-		acno = sc.nextInt();
-		
+		String acnostr = sc.nextLine();
+		while(acnostr.isEmpty())
+		{
+			System.out.println("Please enter an account no to view details");
+			acnostr = sc.nextLine();
+		}
+		acno=Integer.valueOf(acnostr);
 		updateDAO.getDetails(acno);
 		
 	}

@@ -19,31 +19,36 @@ private SessionFactory sessionFactory;
 	public void depositMoney(Integer acNo, Float amount){
 		Session session = sessionFactory.openSession();
 		try {
-			System.out.println("am here");
+			
 			Transaction tx = session.beginTransaction();
 			
 			Query query1=session.createQuery("select account.balance from Person where account=:accNO");
 			query1.setInteger("accNO", acNo);
 			Float bal=(Float)query1.uniqueResult();
-			try
-			{
-			Query query =session.createQuery("Update Account a set a.balance=:balance where id=:accNO");
-			query.setInteger("accNO", acNo);
-			Float upBalance=amount+bal;
-			query.setFloat("balance", upBalance);
-			query.executeUpdate();
+			if(bal==null){
+				System.out.println("The account you have entered is invalid");
 			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
+			else {
+				try
+				{
+				Query query =session.createQuery("Update Account a set a.balance=:balance where id=:accNO");
+				query.setInteger("accNO", acNo);
+				Float upBalance=amount+bal;
+				query.setFloat("balance", upBalance);
+				query.executeUpdate();
+				}
+				catch (Exception e)
+				{
+					e.printStackTrace();
+				}
+					
+		        System.out.println("Deposit Sucessfully");
+		        tx.commit(); 
 			}
-			
-	        System.out.println("Deposit Sucessfully");
-	        tx.commit(); 
-			
 	}catch (Exception e) {
 		// TODO: handle exception
-	}finally{
+	}
+		finally{
     session.close();
 	}
 		

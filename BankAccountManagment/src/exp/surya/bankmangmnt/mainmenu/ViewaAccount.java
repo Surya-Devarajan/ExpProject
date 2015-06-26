@@ -10,7 +10,13 @@ public class ViewaAccount {
 		Integer acno=null;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter account number to view details:");
-		acno = sc.nextInt();
+		String acnostr = sc.nextLine();
+		while(acnostr.isEmpty())
+		{
+			System.out.println("Please enter an account no to update details");
+			acnostr = sc.nextLine();
+		}
+		acno=Integer.valueOf(acnostr);
 		viewDAO.viewDetails(acno);
 	}
 	
